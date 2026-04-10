@@ -1,0 +1,11 @@
+.idea
+.venv
+__pycache__
+*.pyc
+node_modules
+.next
+.DS_Store
+.env
+.vscode
+config/nginx/certs
+logs
