@@ -1,4 +1,4 @@
-# Advanced Frontend Engineer Challenge
+# Frontend Engineer Challenge
 
 Frontend проект для 3 сценариев:
 
