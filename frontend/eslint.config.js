@@ -1,3 +1,6 @@
+// For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
+import storybook from "eslint-plugin-storybook";
+
 import js from '@eslint/js'
 import eslintConfigPrettier from 'eslint-config-prettier'
 import jsxA11y from 'eslint-plugin-jsx-a11y'
@@ -9,31 +12,28 @@ import { defineConfig, globalIgnores } from 'eslint/config'
 import globals from 'globals'
 import tseslint from 'typescript-eslint'
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      js.configs.recommended,
-      tseslint.configs.recommended,
-      reactHooks.configs.flat.recommended,
-      reactRefresh.configs.vite,
-      eslintConfigPrettier,
-      eslintPluginPrettier,
-    ],
-    languageOptions: {
-      ecmaVersion: 2020,
-      globals: globals.browser,
-    },
-    plugins: {
-      react: reactPlugin,
-      'jsx-a11y': jsxA11y,
-    },
-    settings: {
-      tailwindcss: {
-        callees: ['classnames', 'clsx', 'tw', 'cn'],
-        config: 'tailwind.config.ts',
-      },
+export default defineConfig([globalIgnores(['dist']), {
+  files: ['**/*.{ts,tsx}'],
+  extends: [
+    js.configs.recommended,
+    tseslint.configs.recommended,
+    reactHooks.configs.flat.recommended,
+    reactRefresh.configs.vite,
+    eslintConfigPrettier,
+    eslintPluginPrettier,
+  ],
+  languageOptions: {
+    ecmaVersion: 2020,
+    globals: globals.browser,
+  },
+  plugins: {
+    react: reactPlugin,
+    'jsx-a11y': jsxA11y,
+  },
+  settings: {
+    tailwindcss: {
+      callees: ['classnames', 'clsx', 'tw', 'cn'],
+      config: 'tailwind.config.ts',
     },
   },
-])
+}, ...storybook.configs["flat/recommended"]])

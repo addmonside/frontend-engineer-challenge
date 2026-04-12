@@ -1,6 +1,6 @@
 import { createContext } from 'react-router'
 
-type User = {
+export type User = {
   id: string
   email: string
   name: string

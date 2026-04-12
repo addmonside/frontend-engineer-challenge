@@ -1,6 +1,66 @@
 @import 'tailwindcss';
 
+:root {
+  --gradient-surface: linear-gradient(129.57deg, #ebeff4 0%, #e4ebf3 100%);
+}
+
 @theme {
-  --color-background: var(--color-red-500);
-  --color-foreground: var(--color-blue-500);
+  --color-background: #f5f5f5;
+  --color-foreground: #1f1f27;
+  --color-primary: #31a0f0;
+  --color-primary-hover: #1990e5;
+  --color-primary-active: #148adf;
+  --color-primary-foreground: #fff;
+
+  --color-secondary: #31a0f01a;
+  --color-secondary-hover: #31a0f026;
+  --color-secondary-active: #31a0f033;
+  --color-secondary-disabled: #c0c2cb26;
+  --color-secondary-disabled-foreground: #c0c2cb;
+  --color-secondary-foreground: #31a0f0;
+
+  --color-muted: #c0c2cb;
+  --color-muted-foreground: #fff;
+
+  --color-destructive: #d23939;
+
+  /* auth */
+  --color-auth-footer-foreground: #81869a;
+  --background-image-auth: linear-gradient(129.57deg, #ebeff4 0%, #e4ebf3 100%);
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground leading-none font-normal antialiased;
+  }
+}
+
+/* autofill */
+input {
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px transparent inset !important;
+    -webkit-text-fill-color: var(--color-foreground) !important;
+    -webkit-text-size-adjust: 16px !important;
+    transition: background-color 5000s ease-in-out 0s; /* Отключаем анимацию браузера */
+    font-size: 1rem;
+  }
+  &:-moz-autofill {
+    background-color: transparent;
+  }
+}
+
+/* Скрыть крестик в поисковом поле */
+input[type='search'] {
+  &::-webkit-search-cancel-button {
+    display: none;
+  }
+  &::-moz-search-cancel-button {
+    display: none;
+  }
+  ::-ms-clear {
+    display: none;
+  }
 }
