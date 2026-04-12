@@ -107,12 +107,17 @@ type(feature): description
 
 - [vite](https://vitejs.dev/) — сборщик
 - [typescript](https://www.typescriptlang.org/) — строгая типизация
-- [zod](https://zod.dev/) — проверка типов.
-
-- [tailwindcss](https://tailwindcss.com/) — утилитарный CSS
 
 - [react](https://react.dev/) — современный React с hooks
 - [react router](https://reactrouter.com/) — роутинг
+
+- [zod](https://zod.dev/) — проверка типов.
+- [tailwindcss](https://tailwindcss.com/) — утилитарный CSS
+- [tan stack query](https://tanstack.com/query/latest/) — работа с запросами
+- [tan stack form](https://tanstack.com/form/latest/) — работа с формами
+
+- [graphql](https://graphql.org/) — работа с GraphQL
+- [@graphql-codegen](https://the-guild.dev/graphql/codegen) — генерация типов
 
 - [eslint](https://eslint.org/) — линтер JS/TS-кода
 - [prettier](https://prettier.io/) — автоформатирование кода

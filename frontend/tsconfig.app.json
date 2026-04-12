@@ -33,7 +33,13 @@
       "ymaps3": [
         "./node_modules/@yandex/ymaps3-types"
       ]
-    }
+    },
+    "plugins": [
+      {
+        "name": "@0no-co/graphqlsp",
+        "schema": "src/shared/gql/schema.graphql"
+      }
+    ]
   },
   "include": [
     "src",

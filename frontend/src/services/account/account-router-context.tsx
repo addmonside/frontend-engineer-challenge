@@ -1,9 +1,4 @@
 import { createContext } from 'react-router'
+import type { UserType } from '@/shared/gql/gen/graphql'
 
-export type User = {
-  id: string
-  email: string
-  name: string
-}
-
-export const accountRouterContext = createContext<User | null>(null)
+export const accountRouterContext = createContext<UserType | null>(null)
