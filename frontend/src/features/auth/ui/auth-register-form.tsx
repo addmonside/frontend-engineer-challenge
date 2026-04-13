@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router'
+import { useState } from 'react'
 import { routes } from '@/shared/model'
 import { Alert } from '@/shared/ui/kit/alert'
 import { Button } from '@/shared/ui/kit/button'
@@ -10,14 +10,46 @@ import { useRegisterForm } from '../model/use-register-form'
 import { AuthLayoutPage } from './auth-layout-page'
 
 export function AuthRegisterForm() {
-  const navigate = useNavigate()
+  const [isSuccess, setIsSuccess] = useState(false)
   const { form, isLoading, error } = useRegisterForm({
     onSuccess() {
-      navigate(routes.AUTH_LOGIN)
+      setIsSuccess(true)
     },
   })
 
-  return (
+  return isSuccess ? (
+    <div>
+      <p className='text-foreground-secondary text-sm text-pretty'>
+        Вы успещно зарегистрировались в системе, теперь вы можете войти на странице авторизации
+      </p>
+      <AuthLayoutPage.Actions>
+        <Link
+          to={routes.AUTH_LOGIN}
+          variant='default-button'
+        >
+          Назад в авторизацию
+        </Link>
+        <p className='text-muted text-center text-xs text-pretty'>
+          Зарегистрировавшись, пользователь принимает условия{' '}
+          <Link
+            to={routes.DOCS_OFFER}
+            variant='secondary'
+            className='text-xs'
+          >
+            договора оферты
+          </Link>{' '}
+          и{' '}
+          <Link
+            to={routes.DOCS_POLICY}
+            variant='secondary'
+            className='text-xs'
+          >
+            политики конфиденциальности
+          </Link>
+        </p>
+      </AuthLayoutPage.Actions>
+    </div>
+  ) : (
     <form
       id='auth-register-form'
       onSubmit={e => {
