@@ -1,5 +1,7 @@
-import { Link, useParams } from 'react-router'
+import { useParams } from 'react-router'
+import { UtilityLayoutPage } from '@/services/utility'
 import { routes, type RoutesParams } from '@/shared/model'
+import { Link } from '@/shared/ui/kit/link'
 
 const errors: Record<string, { title: string; description: string }> = {
   '404': {
@@ -16,21 +18,23 @@ const errors: Record<string, { title: string; description: string }> = {
 const ErrorPage = () => {
   const { errorId = '404' } = useParams<RoutesParams[typeof routes.ERROR]>()
   const { title, description } = errors[errorId]
+
   return (
-    <section>
-      <header>
-        <strong>{title}</strong>
-        <span>{description}</span>
-      </header>
-      <div>
+    <UtilityLayoutPage>
+      <UtilityLayoutPage.Header>
+        <UtilityLayoutPage.Title>{title}</UtilityLayoutPage.Title>
+        <UtilityLayoutPage.Description>{description}</UtilityLayoutPage.Description>
+      </UtilityLayoutPage.Header>
+      <UtilityLayoutPage.Actions>
         <Link
           to={routes.DASHBOARD}
           tabIndex={-1}
+          variant='secondary-button'
         >
-          <span>Перейти на главную</span>
+          Перейти на главную
         </Link>
-      </div>
-    </section>
+      </UtilityLayoutPage.Actions>
+    </UtilityLayoutPage>
   )
 }
 
