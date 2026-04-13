@@ -118,6 +118,23 @@ export default defineConfig({
           },
         },
       },
+      {
+        extends: true,
+        test: {
+          name: 'unit',
+          include: ['src/**/*.test.ts'],
+          environment: 'node',
+        },
+      },
+      {
+        extends: true,
+        test: {
+          name: 'integration',
+          include: ['src/**/*.flow-test.tsx'],
+          environment: 'jsdom',
+          setupFiles: ['./src/shared/lib/test/setup.ts'],
+        },
+      },
     ],
   },
 })

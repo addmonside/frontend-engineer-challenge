@@ -5,26 +5,38 @@ import { routes } from '@/shared/model'
 import { Link } from '@/shared/ui/kit/link'
 import { AuthRestoringAccessConfirmForm } from './ui/auth-restoring-access-confirm-form'
 
+type Status = 'idle' | 'success' | 'error'
+const texts = new Map<Status, { title: string; description: string }>([
+  [
+    'idle',
+    {
+      title: 'Задайте пароль',
+      description: 'Напишите новый пароль, который будете использовать для входа',
+    },
+  ],
+  [
+    'success',
+    {
+      title: 'Пароль был восстановлен',
+      description: 'Перейдите на страницу авторизации, чтобы войти в систему с новым паролем',
+    },
+  ],
+  [
+    'error',
+    {
+      title: 'Пароль не был восстановлен',
+      description:
+        'По каким-то причинам мы не смогли изменить ваш пароль. Попробуйте ещё раз через некоторое время.',
+    },
+  ],
+])
+
 function AuthRestoringAccessPage() {
-  const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle')
+  const [status, setStatus] = useState<Status>('idle')
   const [searchParams] = useSearchParams()
   const token = searchParams.get('token')
-  const title = useMemo(
-    () =>
-      status === 'idle'
-        ? 'Задайте пароль'
-        : status === 'success'
-          ? 'Пароль был восстановлен'
-          : 'Пароль не был восстановлен',
-    [status]
-  )
-  const description = useMemo(
-    () =>
-      status === 'idle'
-        ? 'Напишите новый пароль, который будете использовать для входа'
-        : status === 'success'
-          ? 'Перейдите на страницу авторизации, чтобы войти в систему с новым паролем'
-          : 'По каким-то причинам мы не смогли изменить ваш пароль. Попробуйте ещё раз через некоторое время.',
+  const { title, description } = useMemo(
+    () => (texts.has(status) ? texts.get(status) : texts.get('idle')),
     [status]
   )
 

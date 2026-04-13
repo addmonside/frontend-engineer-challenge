@@ -43,6 +43,7 @@ export function AuthRestoringAccessRequestForm({ onSuccess }: Readonly<{ onSucce
                     onChange={e => field.handleChange(e.target.value)}
                     aria-invalid={isInvalid}
                     id='auth-restoring-access-request-form-email'
+                    data-testid='auth-restoring-access-request-form-email'
                     placeholder='Введите e-mail'
                     variant='auth'
                     autoComplete='email'
@@ -59,6 +60,7 @@ export function AuthRestoringAccessRequestForm({ onSuccess }: Readonly<{ onSucce
           variant='secondary'
           disabled={isLoading}
           type='submit'
+          data-testid='auth-restoring-access-request-form-submit'
         >
           Восстановить пароль
         </Button>

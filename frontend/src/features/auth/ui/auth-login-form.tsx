@@ -42,7 +42,7 @@ export function AuthLoginForm() {
                 variant='auth'
                 data-invalid={isInvalid}
               >
-                <Field.Label htmlFor='auth-login-form-email'>email</Field.Label>
+                <Field.Label htmlFor='auth-login-form-email'>E-mail</Field.Label>
                 <Field.Content>
                   <Input
                     name={field.name}
@@ -51,6 +51,7 @@ export function AuthLoginForm() {
                     onChange={e => field.handleChange(e.target.value)}
                     aria-invalid={isInvalid}
                     id='auth-login-form-email'
+                    data-testid='auth-login-form-email'
                     placeholder='Введите e-mail'
                     variant='auth'
                     autoComplete='email'
@@ -79,6 +80,7 @@ export function AuthLoginForm() {
                     onChange={e => field.handleChange(e.target.value)}
                     aria-invalid={isInvalid}
                     id='auth-login-form-password'
+                    data-testid='auth-login-form-password'
                     placeholder='Введите пароль'
                     variant='auth'
                     autoComplete='current-password'
@@ -92,6 +94,7 @@ export function AuthLoginForm() {
       </FieldGroup>
       <AuthLayoutPage.Actions>
         <Button
+          data-testid='auth-login-form-submit'
           disabled={isLoading}
           type='submit'
         >

@@ -83,6 +83,7 @@ export function AuthRegisterForm() {
                     onChange={e => field.handleChange(e.target.value)}
                     aria-invalid={isInvalid}
                     id='auth-register-form-email'
+                    data-testid='auth-register-form-email'
                     placeholder='Введите e-mail'
                     variant='auth'
                     autoComplete='email'
@@ -111,6 +112,7 @@ export function AuthRegisterForm() {
                     onChange={e => field.handleChange(e.target.value)}
                     aria-invalid={isInvalid}
                     id='auth-register-form-password'
+                    data-testid='auth-register-form-password'
                     placeholder='Введите пароль'
                     variant='auth'
                     autoComplete='new-password'
@@ -140,7 +142,8 @@ export function AuthRegisterForm() {
                     onBlur={field.handleBlur}
                     onChange={e => field.handleChange(e.target.value)}
                     aria-invalid={isInvalid}
-                    id='auth-register-form-password'
+                    id='auth-register-form-password-confirmation'
+                    data-testid='auth-register-form-password-confirmation'
                     placeholder='Введите пароль'
                     variant='auth'
                     autoComplete='new-password'
@@ -154,6 +157,7 @@ export function AuthRegisterForm() {
       </FieldGroup>
       <AuthLayoutPage.Actions>
         <Button
+          data-testid='auth-register-form-submit'
           disabled={isLoading}
           type='submit'
         >

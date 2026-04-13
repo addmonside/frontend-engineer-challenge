@@ -14,7 +14,7 @@ export function AuthRestoringAccessConfirmForm({
 
   return (
     <form
-      id='auth-restoring-access-request-form'
+      id='auth-restoring-access-confirm-form'
       className='contents'
       onSubmit={e => {
         e.preventDefault()
@@ -38,7 +38,9 @@ export function AuthRestoringAccessConfirmForm({
                 variant='auth'
                 data-invalid={isInvalid}
               >
-                <Field.Label htmlFor='auth-restoring-access-form-password'>Пароль</Field.Label>
+                <Field.Label htmlFor='auth-restoring-access-confirm-form-password'>
+                  Пароль
+                </Field.Label>
                 <Field.Content>
                   <PasswordInput
                     name={field.name}
@@ -46,7 +48,8 @@ export function AuthRestoringAccessConfirmForm({
                     onBlur={field.handleBlur}
                     onChange={e => field.handleChange(e.target.value)}
                     aria-invalid={isInvalid}
-                    id='auth-restoring-access-form-password'
+                    id='auth-restoring-access-confirm-form-password'
+                    data-testid='auth-restoring-access-confirm-form-password'
                     placeholder='Введите пароль'
                     variant='auth'
                     autoComplete='new-password'
@@ -66,7 +69,7 @@ export function AuthRestoringAccessConfirmForm({
                 variant='auth'
                 data-invalid={isInvalid}
               >
-                <Field.Label htmlFor='auth-restoring-access-form-password-confirmation'>
+                <Field.Label htmlFor='auth-restoring-access-confirm-form-password-confirmation'>
                   Подтвердите пароль
                 </Field.Label>
                 <Field.Content>
@@ -76,7 +79,8 @@ export function AuthRestoringAccessConfirmForm({
                     onBlur={field.handleBlur}
                     onChange={e => field.handleChange(e.target.value)}
                     aria-invalid={isInvalid}
-                    id='auth-restoring-access-form-password'
+                    id='auth-restoring-access-confirm-form-password-confirmation'
+                    data-testid='auth-restoring-access-confirm-form-password-confirmation'
                     placeholder='Введите пароль'
                     variant='auth'
                     autoComplete='new-password'
@@ -90,6 +94,7 @@ export function AuthRestoringAccessConfirmForm({
       </FieldGroup>
       <UtilityLayoutPage.Actions>
         <Button
+          data-testid='auth-restoring-access-confirm-form-submit'
           disabled={isLoading}
           type='submit'
         >

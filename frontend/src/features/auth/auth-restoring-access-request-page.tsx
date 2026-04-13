@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useState } from 'react'
 import { UtilityLayoutPage } from '@/services/utility'
 import ArrowLeftIcon from '@/shared/assets/icons/arrow-left-icon.svg'
 import { routes } from '@/shared/model'
@@ -7,17 +7,15 @@ import { AuthRestoringAccessRequestForm } from './ui/auth-restoring-access-reque
 
 function AuthRestoringAccessRequestPage() {
   const [isSuccess, setIsSuccess] = useState(false)
-  const title = useMemo(
-    () => (isSuccess ? 'Проверьте свою почту' : 'Восстановление пароля'),
-    [isSuccess]
-  )
-  const description = useMemo(
-    () =>
-      isSuccess
-        ? 'Мы отправили на почту письмо с ссылкой для восстановления пароля'
-        : 'Укажите адрес почты на который был зарегистрирован аккаунт',
-    [isSuccess]
-  )
+  const { title, description } = isSuccess
+    ? {
+      title: 'Проверьте свою почту',
+      description: 'Мы отправили на почту письмо с ссылкой для восстановления пароля',
+    }
+    : {
+      title: 'Восстановление пароля',
+      description: 'Укажите адрес почты на который был зарегистрирован аккаунт',
+    }
 
   return (
     <UtilityLayoutPage>
