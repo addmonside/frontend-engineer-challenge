@@ -5,15 +5,12 @@ import { AuthLoginForm } from './ui/auth-login-form'
 
 function AuthLoginPage() {
   return (
-    <AuthLayoutPage
-      header='Войти в систему'
-      footer={
-        <>
-          Еще не зарегистрированы? <Link to={routes.REGISTER}>Регистрация</Link>
-        </>
-      }
-    >
+    <AuthLayoutPage>
+      <AuthLayoutPage.Header>Войти в систему</AuthLayoutPage.Header>
       <AuthLoginForm />
+      <AuthLayoutPage.Footer>
+        Еще не зарегистрированы? <Link to={routes.AUTH_REGISTER}>Регистрация</Link>
+      </AuthLayoutPage.Footer>
     </AuthLayoutPage>
   )
 }

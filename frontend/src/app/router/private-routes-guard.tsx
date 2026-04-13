@@ -5,7 +5,7 @@ import { routes } from '@/shared/model'
 export async function privateRoutesGuard({ context }) {
   const user = await getAccount()
   if (!user) {
-    throw redirect(routes.LOGIN)
+    throw redirect(routes.AUTH_LOGIN)
   }
   context.set(accountRouterContext, user)
 }

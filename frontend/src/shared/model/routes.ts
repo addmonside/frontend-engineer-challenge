@@ -2,9 +2,11 @@ export const routes = {
   ROOT: '/',
 
   // auth
-  LOGIN: '/login',
-  REGISTER: '/register',
-  RECOVERY: '/recovery',
+  AUTH_LOGIN: '/auth/login',
+  AUTH_REGISTER: '/auth/register',
+
+  DOCS_OFFER: '/docs/offer',
+  DOCS_POLICY: '/docs/policy',
 
   DASHBOARD: '/dashboard',
 

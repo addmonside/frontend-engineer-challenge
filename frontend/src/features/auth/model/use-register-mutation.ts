@@ -1,6 +1,5 @@
 import { useMutation } from '@tanstack/react-query'
-import { execute, graphql } from '@/shared/gql'
-import type { RegisterMutationVariables } from '@/shared/gql/gen/graphql'
+import { execute, graphql, type RegisterMutationVariables } from '@/shared/gql'
 
 export const authRegister = graphql(`
   mutation register($input: RegisterUserInput!) {

@@ -5,15 +5,12 @@ import { AuthRegisterForm } from './ui/auth-register-form'
 
 function AuthRegisterPage() {
   return (
-    <AuthLayoutPage
-      header='Регистрация в системе'
-      footer={
-        <>
-          Уже есть аккаунт? <Link to={routes.LOGIN}>Войти</Link>
-        </>
-      }
-    >
+    <AuthLayoutPage>
+      <AuthLayoutPage.Header>Регистрация в системе</AuthLayoutPage.Header>
       <AuthRegisterForm />
+      <AuthLayoutPage.Footer>
+        Уже есть аккаунт? <Link to={routes.AUTH_LOGIN}>Войти</Link>
+      </AuthLayoutPage.Footer>
     </AuthLayoutPage>
   )
 }

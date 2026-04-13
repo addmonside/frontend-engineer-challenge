@@ -1,11 +1,21 @@
+import { useNavigate } from 'react-router'
+import { routes } from '@/shared/model'
+import { Alert } from '@/shared/ui/kit/alert'
 import { Button } from '@/shared/ui/kit/button'
 import { Field, FieldGroup } from '@/shared/ui/kit/field'
 import { Input } from '@/shared/ui/kit/input'
+import { Link } from '@/shared/ui/kit/link'
 import { PasswordInput } from '@/shared/ui/password-input'
-import { useLogin } from '../model/use-login'
+import { useLoginForm } from '../model/use-login-form'
+import { AuthLayoutPage } from './auth-layout-page'
 
 export function AuthLoginForm() {
-  const { form, isLoading, error } = useLogin()
+  const navigate = useNavigate()
+  const { form, isLoading, error } = useLoginForm({
+    onSuccess() {
+      navigate(routes.DASHBOARD)
+    },
+  })
 
   return (
     <form
@@ -15,7 +25,13 @@ export function AuthLoginForm() {
         form.handleSubmit()
       }}
     >
-      {!!error && <output>{error.message}</output>}
+      {!!error && (
+        <output>
+          <Alert variant='destructive'>
+            <Alert.Description>{error.message}</Alert.Description>
+          </Alert>
+        </output>
+      )}
       <FieldGroup>
         <form.Field
           name='email'
@@ -54,7 +70,7 @@ export function AuthLoginForm() {
                 variant='auth'
                 data-invalid={isInvalid}
               >
-                <Field.Label htmlFor='auth-login-form-email'>email</Field.Label>
+                <Field.Label htmlFor='auth-login-form-password'>Пароль</Field.Label>
                 <Field.Content>
                   <PasswordInput
                     name={field.name}
@@ -65,7 +81,7 @@ export function AuthLoginForm() {
                     id='auth-login-form-password'
                     placeholder='Введите пароль'
                     variant='auth'
-                    autoComplete='password'
+                    autoComplete='current-password'
                   />
                 </Field.Content>
                 {isInvalid && <Field.Error errors={field.state.meta.errors} />}
@@ -73,13 +89,16 @@ export function AuthLoginForm() {
             )
           }}
         />
+      </FieldGroup>
+      <AuthLayoutPage.Actions>
         <Button
           disabled={isLoading}
           type='submit'
         >
-          submit
+          Войти
         </Button>
-      </FieldGroup>
+        <Link to={routes.AUTH_RESTORE_ACCESS_REQUEST}>Забыли пароль?</Link>
+      </AuthLayoutPage.Actions>
     </form>
   )
 }

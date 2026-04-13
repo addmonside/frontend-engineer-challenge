@@ -9,27 +9,39 @@ export const router = createBrowserRouter([
     element: <Providers />,
     children: [
       {
-        lazy: () => import('@/features/auth/auth-layout'),
+        path: routes.ROOT,
+        loader: () => redirect(href(routes.DASHBOARD)),
+      },
+      {
         middleware: [authRoutesGuard],
         children: [
           {
-            path: routes.LOGIN,
+            lazy: () => import('@/features/auth/auth-layout'),
+            children: [
+              {
+                path: routes.AUTH_LOGIN,
             lazy: async () => import('@/features/auth/auth-login-page'),
           },
           {
-            path: routes.REGISTER,
-            middleware: [authRoutesGuard],
-            lazy: async () => import('@/features/auth/auth-register-page'),
+                path: routes.AUTH_REGISTER,
+                lazy: async () => import('@/features/auth/auth-register-page'),
+              },
+            ],
+          },
+          {
           },
         ],
       },
       {
-        path: routes.DASHBOARD,
         middleware: [privateRoutesGuard],
+        children: [
+          {
+            path: routes.DASHBOARD,
         // loader: dashboardLoader,
         lazy: async () => import('@/features/dashboard/dashboard-page'),
+          },
+        ],
       },
-
       {
         path: routes.ERROR,
         lazy: () => import('@/features/utility/error-page'),

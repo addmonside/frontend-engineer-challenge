@@ -1,6 +1,11 @@
 import { useMutation } from '@tanstack/react-query'
-import { execute, graphql } from '@/shared/gql'
-import type { AuthenticateMutationVariables } from '@/shared/gql/gen/graphql'
+import {
+  ApiError,
+  type AuthenticateMutation,
+  type AuthenticateMutationVariables,
+  execute,
+  graphql,
+} from '@/shared/gql'
 
 export const authLogin = graphql(`
   mutation authenticate($input: AuthenticateInput!) {
@@ -12,10 +17,17 @@ export const authLogin = graphql(`
 `)
 
 export function useLoginMutation({ onSuccess }: { onSuccess: (token: string) => void }) {
-  const { mutate, isPending, error } = useMutation({
+  const { mutate, isPending, error } = useMutation<
+    AuthenticateMutation,
+    ApiError,
+    AuthenticateMutationVariables
+  >({
     mutationFn: (variables: AuthenticateMutationVariables) => execute(authLogin, variables),
     onSuccess(data) {
       onSuccess(data.authenticate.accessToken)
+    },
+    onError(error: ApiError) {
+      console.error(error)
     },
   })
 
