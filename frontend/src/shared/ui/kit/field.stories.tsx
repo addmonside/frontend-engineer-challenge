@@ -11,11 +11,11 @@ const meta = {
   },
   tags: ['autodocs'],
   argTypes: {
-    // variant: {
-    //   control: 'select',
-    //   defaultValue: 'default',
-    //   options: ['default', 'auth'],
-    // },
+    variant: {
+      control: 'select',
+      defaultValue: 'default',
+      options: ['default', 'auth'],
+    },
   },
   args: { onClick: fn() },
 } satisfies Meta<typeof Field>
@@ -27,9 +27,10 @@ export const Default: Story = {
   args: {
     children: (
       <>
-        <Field.Label>label</Field.Label>
+        <Field.Label htmlFor='input'>label</Field.Label>
         <Field.Content>
           <Input
+            id='input'
             variant='auth'
             placeholder='email'
           />

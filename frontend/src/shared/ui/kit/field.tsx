@@ -51,7 +51,7 @@ const fieldVariants = cva('group/field data-[invalid=true]:text-destructive flex
   variants: {
     variant: {
       default: 'flex-col gap-3',
-      auth: 'relative flex-col gap-0 *:data-[slot=field-content]:pt-2 *:data-[slot=field-label]:absolute *:data-[slot=field-label]:top-2 *:data-[slot=field-label]:cursor-text *:data-[slot=field-label]:text-xs [&:has(input:placeholder-shown)_[data-slot=field-label]]:top-6.5 [&:has(input:placeholder-shown)_[data-slot=field-label]]:text-[0.9375rem] **:[input]:placeholder:text-transparent',
+      auth: 'relative flex-col gap-0 *:data-[slot=field-content]:pt-2 *:data-[slot=field-label]:absolute *:data-[slot=field-label]:top-2 *:data-[slot=field-label]:cursor-text *:data-[slot=field-label]:text-xs [&:has(input:placeholder-shown):not(:has(input:-webkit-autofill))_[data-slot=field-label]]:top-6.5 [&:has(input:placeholder-shown):not(:has(input:-webkit-autofill))_[data-slot=field-label]]:text-[0.9375rem] **:[input]:placeholder:text-transparent',
       // + ' [&:has(input:focus)_[data-slot=field-label]]:top-2! [&:has(input:focus)_[data-slot=field-label]]:text-xs!'
     },
   },
@@ -86,9 +86,14 @@ function FieldContent({ className, ...props }: ComponentProps<'div'>) {
   )
 }
 
-function FieldLabel({ className, ...props }: ComponentProps<'label'>) {
+function FieldLabel({
+  className,
+  htmlFor,
+  ...props
+}: ComponentProps<'label'> & { htmlFor: string }) {
   return (
     <label
+      htmlFor={htmlFor}
       data-slot='field-label'
       className={cn(
         'group/field-label peer/field-label has-data-checked:border-primary/30 has-data-checked:bg-primary/5 flex w-fit gap-2 leading-snug group-data-[disabled=true]/field:opacity-50 has-[>[data-slot=field]]:rounded-md has-[>[data-slot=field]]:border *:data-[slot=field]:p-3',

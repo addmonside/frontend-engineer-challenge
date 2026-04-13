@@ -20,8 +20,11 @@ export function PasswordInput({
         variant='ghost-gray'
         onClick={() => setDisplayed(prev => !prev)}
         size='icon-xs'
+        aria-label={displayed ? 'Скрыть пароль' : 'Показать пароль'}
+        tabIndex={-1}
       >
-        {displayed ? <VisibleIcon className='text-sm' /> : <UnisibleIcon />}
+        {displayed ? <VisibleIcon aria-hidden='true' /> : <UnisibleIcon aria-hidden='true' />}
+        <span className='sr-only'>{displayed ? 'Скрыть пароль' : 'Показать пароль'}</span>
       </InputGroup.Button>
     </InputGroup>
   )
