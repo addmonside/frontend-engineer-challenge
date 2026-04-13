@@ -115,6 +115,20 @@ export type RegisterMutationVariables = Exact<{
 
 export type RegisterMutation = { __typename?: 'Mutation', register: { __typename?: 'UserType', id: string, email: string, isActive: boolean } };
 
+export type ResetPasswordMutationVariables = Exact<{
+  input: ResetPasswordInput;
+}>;
+
+
+export type ResetPasswordMutation = { __typename?: 'Mutation', resetPassword: boolean };
+
+export type RequestPasswordResetMutationVariables = Exact<{
+  input: RequestResetInput;
+}>;
+
+
+export type RequestPasswordResetMutation = { __typename?: 'Mutation', requestPasswordReset: { __typename?: 'PasswordResetRequestResultType', ok: boolean, deliveryMode: string, resetUrlPreview?: string | null } };
+
 export type MeQueryVariables = Exact<{ [key: string]: never; }>;
 
 
@@ -156,6 +170,20 @@ export const RegisterDocument = new TypedDocumentString(`
   }
 }
     `) as unknown as TypedDocumentString<RegisterMutation, RegisterMutationVariables>;
+export const ResetPasswordDocument = new TypedDocumentString(`
+    mutation resetPassword($input: ResetPasswordInput!) {
+  resetPassword(input: $input)
+}
+    `) as unknown as TypedDocumentString<ResetPasswordMutation, ResetPasswordMutationVariables>;
+export const RequestPasswordResetDocument = new TypedDocumentString(`
+    mutation requestPasswordReset($input: RequestResetInput!) {
+  requestPasswordReset(input: $input) {
+    ok
+    deliveryMode
+    resetUrlPreview
+  }
+}
+    `) as unknown as TypedDocumentString<RequestPasswordResetMutation, RequestPasswordResetMutationVariables>;
 export const MeDocument = new TypedDocumentString(`
     query me {
   me {

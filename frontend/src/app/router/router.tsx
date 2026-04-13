@@ -20,15 +20,26 @@ export const router = createBrowserRouter([
             children: [
               {
                 path: routes.AUTH_LOGIN,
-            lazy: async () => import('@/features/auth/auth-login-page'),
-          },
-          {
+                lazy: async () => import('@/features/auth/auth-login-page'),
+              },
+              {
                 path: routes.AUTH_REGISTER,
                 lazy: async () => import('@/features/auth/auth-register-page'),
               },
             ],
           },
           {
+            lazy: async () => import('@/features/utility/utility-layout'),
+            children: [
+              {
+                path: routes.AUTH_RESTORE_ACCESS_REQUEST,
+                lazy: async () => import('@/features/auth/auth-restoring-access-request-page'),
+              },
+              {
+                path: routes.AUTH_RESTORE_ACCESS_CONFIRM,
+                lazy: async () => import('@/features/auth/auth-restoring-access-confirm-page'),
+              },
+            ],
           },
         ],
       },
@@ -37,14 +48,19 @@ export const router = createBrowserRouter([
         children: [
           {
             path: routes.DASHBOARD,
-        // loader: dashboardLoader,
-        lazy: async () => import('@/features/dashboard/dashboard-page'),
+            // loader: dashboardLoader,
+            lazy: async () => import('@/features/dashboard/dashboard-page'),
           },
         ],
       },
       {
-        path: routes.ERROR,
-        lazy: () => import('@/features/utility/error-page'),
+        lazy: async () => import('@/features/utility/utility-layout'),
+        children: [
+          {
+            path: routes.ERROR,
+            lazy: () => import('@/features/utility/error-page'),
+          },
+        ],
       },
       {
         path: '*',

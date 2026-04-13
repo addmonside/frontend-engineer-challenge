@@ -4,6 +4,8 @@ export const routes = {
   // auth
   AUTH_LOGIN: '/auth/login',
   AUTH_REGISTER: '/auth/register',
+  AUTH_RESTORE_ACCESS_REQUEST: '/auth/recovery',
+  AUTH_RESTORE_ACCESS_CONFIRM: '/reset-password', // ссылка с бека такая
 
   DOCS_OFFER: '/docs/offer',
   DOCS_POLICY: '/docs/policy',
