@@ -59,6 +59,7 @@ function UtilityLayoutPageActions({ children }: Readonly<{ children: ReactNode }
   return <div className='grid gap-8 pt-2'>{children}</div>
 }
 
+UtilityLayoutPageWrapper.displayName = 'UtilityLayoutPage'
 export const UtilityLayoutPage = Object.assign(UtilityLayoutPageWrapper, {
   Header: UtilityLayoutPageHeader,
   Title: UtilityLayoutPageTitle,

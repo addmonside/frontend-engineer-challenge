@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import type { ReactNode } from 'react'
 
 function AuthLayoutPageWrapper({ children }: Readonly<{ children: ReactNode }>) {
@@ -26,6 +27,7 @@ function AuthLayoutPageActions({ children }: Readonly<{ children: ReactNode }>) 
   return <div className='flex flex-col gap-8 py-8'>{children}</div>
 }
 
+AuthLayoutPageWrapper.displayName = 'AuthLayoutPage'
 export const AuthLayoutPage = Object.assign(AuthLayoutPageWrapper, {
   Header: AuthLayoutPageHeader,
   Footer: AuthLayoutPageFooter,
