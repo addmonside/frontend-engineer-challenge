@@ -32,6 +32,8 @@ export function Link({
   return (
     <RouterLink
       className={cn(variants({ variant, className }))}
+      data-variant={variant}
+      data-slot='link'
       {...props}
     />
   )

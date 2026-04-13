@@ -70,6 +70,7 @@ function AlertAction({ className, ...props }: React.ComponentProps<'div'>) {
   )
 }
 
+AlertWrapper.displayName = 'Alert'
 export const Alert = Object.assign(AlertWrapper, {
   Title: AlertTitle,
   Description: AlertDescription,

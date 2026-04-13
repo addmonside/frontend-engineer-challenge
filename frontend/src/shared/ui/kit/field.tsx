@@ -152,6 +152,8 @@ function FieldError({
 }
 
 export { FieldGroup, FieldLegend, FieldSet }
+
+FieldWrapper.displayName = 'Field'
 export const Field = Object.assign(FieldWrapper, {
   Label: FieldLabel,
   Error: FieldError,

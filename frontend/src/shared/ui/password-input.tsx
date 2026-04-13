@@ -11,7 +11,10 @@ export function PasswordInput({
   const [displayed, setDisplayed] = useState(false)
 
   return (
-    <InputGroup variant={variant}>
+    <InputGroup
+      variant={variant}
+      data-slot='password-input'
+    >
       <InputGroup.Control
         type={displayed ? 'text' : 'password'}
         {...props}

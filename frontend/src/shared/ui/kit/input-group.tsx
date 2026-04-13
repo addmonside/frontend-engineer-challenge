@@ -146,6 +146,7 @@ function InputGroupControl({ className, ...props }: React.ComponentProps<'input'
   )
 }
 
+InputGroupWrapper.displayName = 'InputGroup'
 export const InputGroup = Object.assign(InputGroupWrapper, {
   Addon: InputGroupAddon,
   Button: InputGroupButton,
