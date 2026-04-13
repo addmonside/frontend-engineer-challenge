@@ -11,7 +11,7 @@ export const me = graphql(`
   }
 `)
 
-export function useMeQuery() {
+export function useAccountQuery() {
   const { data, refetch, isPending } = useQuery({
     queryKey: ['me'],
     queryFn: () => execute(me),
