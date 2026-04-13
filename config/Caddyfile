@@ -1,4 +1,10 @@
-https://localhost {
+https://localhost:4443 {
     tls internal
-    reverse_proxy backend:{env.BACKEND_PORT}
+    handle /graphql {
+        reverse_proxy backend:{env.BACKEND_PORT}
+    }
+
+    handle {
+        reverse_proxy frontend:80
+    }
 }

@@ -39,8 +39,8 @@ services:
       REDIS_URL: redis://${REDIS_HOST}:${REDIS_PORT}
       APP_BASE_URL: ${FRONTEND_URL}
       JWT_SECRET_KEY: ${JWT_SECRET_KEY}
-      CORS_ORIGINS: ${FRONTEND_URL}
-    expose: # ← было ports, стало expose
+      CORS_ORIGINS: ${CORS_ORIGINS}
+    expose:
       - "${BACKEND_PORT}"
     depends_on:
       database:
@@ -48,19 +48,34 @@ services:
       redis:
         condition: service_healthy
 
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        VITE_ENV: ${FRONTEND_ENV}
+        VITE_API_URL: ${BACKEND_URL}
+    container_name: orbitto-frontend
+    expose:
+      - "80"
+    depends_on:
+      - backend
+
   caddy:
     image: caddy:alpine
     container_name: orbitto-caddy
     ports:
       - "${BACKEND_PORT}:443"
+      - "${FRONTEND_PORT}:4443"
     environment:
-      - BACKEND_PORT=${BACKEND_PORT} # ← чтобы использовать в Caddyfile
+      - BACKEND_PORT=${BACKEND_PORT}
+      - FRONTEND_PORT=${FRONTEND_PORT}
     volumes:
       - ./config/Caddyfile:/etc/caddy/Caddyfile
       - caddy_data:/data
       - caddy_certs:/root/.local/share/caddy
     depends_on:
       - backend
+      - frontend
 
 volumes:
   db_data:
