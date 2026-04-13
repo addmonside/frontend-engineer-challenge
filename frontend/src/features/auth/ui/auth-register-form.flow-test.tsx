@@ -3,9 +3,10 @@ import { graphql, HttpResponse } from 'msw'
 import { setupServer } from 'msw/node'
 import { afterAll, afterEach, beforeAll, describe, expect, it, vi } from 'vitest'
 import { renderWithProviders } from '@/shared/lib/test/test-utils'
+import { config } from '@/shared/model'
 import { AuthRegisterForm } from '../ui/auth-register-form'
 
-const gql = graphql.link('https://localhost:8000/graphql')
+const gql = graphql.link(config.API_URL)
 export const handlers = [
   gql.mutation('register', () => {
     return HttpResponse.json({

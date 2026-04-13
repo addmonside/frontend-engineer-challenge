@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useState } from 'react'
 import { useSearchParams } from 'react-router'
 import { UtilityLayoutPage } from '@/services/utility'
 import { routes } from '@/shared/model'
@@ -35,16 +35,13 @@ function AuthRestoringAccessPage() {
   const [status, setStatus] = useState<Status>('idle')
   const [searchParams] = useSearchParams()
   const token = searchParams.get('token')
-  const { title, description } = useMemo(
-    () => (texts.has(status) ? texts.get(status) : texts.get('idle')),
-    [status]
-  )
+  const text = texts.has(status) ? texts.get(status) : texts.get('idle')
 
   return (
     <UtilityLayoutPage>
       <UtilityLayoutPage.Header>
-        <UtilityLayoutPage.Title>{title}</UtilityLayoutPage.Title>
-        <UtilityLayoutPage.Description>{description}</UtilityLayoutPage.Description>
+        <UtilityLayoutPage.Title>{text?.title}</UtilityLayoutPage.Title>
+        <UtilityLayoutPage.Description>{text?.description}</UtilityLayoutPage.Description>
       </UtilityLayoutPage.Header>
       {status === 'idle' && (
         <AuthRestoringAccessConfirmForm

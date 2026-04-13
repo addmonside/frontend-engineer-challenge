@@ -4,10 +4,10 @@ import { setupServer } from 'msw/node'
 import * as router from 'react-router'
 import { afterAll, afterEach, beforeAll, describe, expect, it, vi } from 'vitest'
 import { renderWithProviders } from '@/shared/lib/test/test-utils'
-import { routes } from '@/shared/model'
+import { config, routes } from '@/shared/model'
 import { AuthLoginForm } from '../ui/auth-login-form'
 
-const gql = graphql.link('https://localhost:8000/graphql')
+const gql = graphql.link(config.API_URL)
 export const handlers = [
   gql.mutation('authenticate', () => {
     return HttpResponse.json({

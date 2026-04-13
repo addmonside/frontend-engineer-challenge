@@ -1,11 +1,12 @@
-import { cleanup, fireEvent, screen, waitFor, within } from '@testing-library/react'
+import { cleanup, fireEvent, screen, waitFor } from '@testing-library/react'
 import { graphql, HttpResponse } from 'msw'
 import { setupServer } from 'msw/node'
 import { afterAll, afterEach, beforeAll, describe, expect, it, vi } from 'vitest'
 import { renderWithProviders } from '@/shared/lib/test/test-utils'
+import { config } from '@/shared/model'
 import { AuthRestoringAccessRequestForm } from './auth-restoring-access-request-form'
 
-const gql = graphql.link('https://localhost:8000/graphql')
+const gql = graphql.link(config.API_URL)
 
 export const handlers = [
   gql.mutation('requestPasswordReset', () => {
@@ -14,7 +15,7 @@ export const handlers = [
         requestPasswordReset: {
           ok: true,
           deliveryMode: 'EMAIL',
-          resetUrlPreview: 'https://localhost:8000/reset-password?token=test-token',
+          resetUrlPreview: `${config.API_URL}/reset-password?token=test-token`,
         },
       },
     })
