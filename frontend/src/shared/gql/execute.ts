@@ -26,13 +26,28 @@ export async function execute<TResult, TVariables>(
   })
 
   if (!response.ok) {
-    throw new Error('Network response was not ok')
+    throw new ApiError({ status: response.status, data: { detail: 'Network response was not ok' } })
   }
 
   const json = await response.json()
+
+  if (json.errors) {
+    throw new ApiError({ status: response.status, data: json.errors[0] })
+  }
   return json.data as TResult
 }
 
 function getToken() {
   return localStorage.getItem('token')
+}
+
+export class ApiError extends Error {
+  public status: number
+  public data: { message?: string; detail?: string }
+  constructor({ status, data }: { status: number; data: { message?: string; detail?: string } }) {
+    super('ApiError:' + status)
+    this.status = status
+    this.data = data
+    this.message = data.message || data.detail || `ApiError: ${JSON.stringify(this.data)}`
+  }
 }
