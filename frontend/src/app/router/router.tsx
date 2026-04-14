@@ -1,5 +1,6 @@
 import { createBrowserRouter, href, redirect } from 'react-router'
 import { routes } from '@/shared/model'
+import { Loader } from '@/shared/ui/loader'
 import { Providers } from '../providers'
 import { authRoutesGuard } from './auth-routes-guard'
 import { privateRoutesGuard } from './private-routes-guard'
@@ -7,6 +8,11 @@ import { privateRoutesGuard } from './private-routes-guard'
 export const router = createBrowserRouter([
   {
     element: <Providers />,
+    HydrateFallback: () => (
+      <div className='flex min-h-dvh items-center justify-center'>
+        <Loader />
+      </div>
+    ),
     children: [
       {
         path: routes.ROOT,
