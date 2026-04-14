@@ -115,10 +115,10 @@ type(feature): description
 - [tailwindcss](https://tailwindcss.com/) — утилитарный CSS
 - [tan stack query](https://tanstack.com/query/latest/) — работа с запросами
 - [tan stack form](https://tanstack.com/form/latest/) — работа с формами
-
 - [graphql](https://graphql.org/) — работа с GraphQL
 - [@graphql-codegen](https://the-guild.dev/graphql/codegen) — генерация типов
 
 - [eslint](https://eslint.org/) — линтер JS/TS-кода
 - [prettier](https://prettier.io/) — автоформатирование кода
 - [storybook](https://storybook.js.org/) — документация и тестирование компонентов
+- [vitest](https://vitest.dev/) — тесты
