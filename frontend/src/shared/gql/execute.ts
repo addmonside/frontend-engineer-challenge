@@ -45,7 +45,7 @@ export class ApiError extends Error {
   public status: number
   public data: { message?: string; detail?: string }
   constructor({ status, data }: { status: number; data: { message?: string; detail?: string } }) {
-    super('ApiError:' + status)
+    super('ApiError: ' + status)
     this.status = status
     this.data = data
     this.message = data.message || data.detail || `ApiError: ${JSON.stringify(this.data)}`

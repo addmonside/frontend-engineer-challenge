@@ -106,7 +106,7 @@ export type AuthenticateMutationVariables = Exact<{
 }>;
 
 
-export type AuthenticateMutation = { __typename?: 'Mutation', authenticate: { __typename?: 'AuthResultType', accessToken: string, userId: string } };
+export type AuthenticateMutation = { __typename?: 'Mutation', authenticate: { __typename?: 'AuthResultType', accessToken: string } };
 
 export type RegisterMutationVariables = Exact<{
   input: RegisterUserInput;
@@ -157,7 +157,6 @@ export const AuthenticateDocument = new TypedDocumentString(`
     mutation authenticate($input: AuthenticateInput!) {
   authenticate(input: $input) {
     accessToken
-    userId
   }
 }
     `) as unknown as TypedDocumentString<AuthenticateMutation, AuthenticateMutationVariables>;

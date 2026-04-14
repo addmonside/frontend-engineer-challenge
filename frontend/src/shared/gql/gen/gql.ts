@@ -15,14 +15,14 @@ import * as types from './graphql';
  * Learn more about it here: https://the-guild.dev/graphql/codegen/plugins/presets/preset-client#reducing-bundle-size
  */
 type Documents = {
-    "\n  mutation authenticate($input: AuthenticateInput!) {\n    authenticate(input: $input) {\n      accessToken\n      userId\n    }\n  }\n": typeof types.AuthenticateDocument,
+    "\n  mutation authenticate($input: AuthenticateInput!) {\n    authenticate(input: $input) {\n      accessToken\n    }\n  }\n": typeof types.AuthenticateDocument,
     "\n  mutation register($input: RegisterUserInput!) {\n    register(input: $input) {\n      id\n      email\n      isActive\n    }\n  }\n": typeof types.RegisterDocument,
     "\n  mutation resetPassword($input: ResetPasswordInput!) {\n    resetPassword(input: $input)\n  }\n": typeof types.ResetPasswordDocument,
     "\n  mutation requestPasswordReset($input: RequestResetInput!) {\n    requestPasswordReset(input: $input) {\n      ok\n      deliveryMode\n      resetUrlPreview\n    }\n  }\n": typeof types.RequestPasswordResetDocument,
     "\n  query me {\n    me {\n      id\n      email\n      isActive\n    }\n  }\n": typeof types.MeDocument,
 };
 const documents: Documents = {
-    "\n  mutation authenticate($input: AuthenticateInput!) {\n    authenticate(input: $input) {\n      accessToken\n      userId\n    }\n  }\n": types.AuthenticateDocument,
+    "\n  mutation authenticate($input: AuthenticateInput!) {\n    authenticate(input: $input) {\n      accessToken\n    }\n  }\n": types.AuthenticateDocument,
     "\n  mutation register($input: RegisterUserInput!) {\n    register(input: $input) {\n      id\n      email\n      isActive\n    }\n  }\n": types.RegisterDocument,
     "\n  mutation resetPassword($input: ResetPasswordInput!) {\n    resetPassword(input: $input)\n  }\n": types.ResetPasswordDocument,
     "\n  mutation requestPasswordReset($input: RequestResetInput!) {\n    requestPasswordReset(input: $input) {\n      ok\n      deliveryMode\n      resetUrlPreview\n    }\n  }\n": types.RequestPasswordResetDocument,
@@ -32,7 +32,7 @@ const documents: Documents = {
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  mutation authenticate($input: AuthenticateInput!) {\n    authenticate(input: $input) {\n      accessToken\n      userId\n    }\n  }\n"): typeof import('./graphql').AuthenticateDocument;
+export function graphql(source: "\n  mutation authenticate($input: AuthenticateInput!) {\n    authenticate(input: $input) {\n      accessToken\n    }\n  }\n"): typeof import('./graphql').AuthenticateDocument;
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
