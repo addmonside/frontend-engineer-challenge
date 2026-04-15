@@ -1,12 +1,12 @@
 import { useForm } from '@tanstack/react-form'
 import z from 'zod'
 import { useRegisterMutation } from './use-register-mutation'
-import { getEmailVallidationSchema, getPasswordVallidationSchema } from './validation'
+import { getEmailSchema, getPasswordSchema } from './validation'
 
 const schema = z
   .object({
-    email: getEmailVallidationSchema(),
-    password: getPasswordVallidationSchema(),
+    email: getEmailSchema(),
+    password: getPasswordSchema(),
     passwordConfirmation: z.string('Подтверждение пароля не может быть пустым'),
   })
   .refine(data => data.password === data.passwordConfirmation, {

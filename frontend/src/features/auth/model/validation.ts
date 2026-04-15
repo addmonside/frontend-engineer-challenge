@@ -1,15 +1,19 @@
 import z from 'zod'
 
-export function getEmailVallidationSchema() {
+export function getEmailSchema() {
   return z.email('Недопустимый адрес почты').max(64, 'Максимум 64 символов')
 }
 
-export function getPasswordVallidationSchema() {
+export function getPasswordRangeSchema() {
   return z
     .string()
     .nonempty('Пароль не может быть пустым')
     .min(12, 'Минимум 12 символов')
     .max(32, 'Максимум 32 символов')
+}
+
+export function getPasswordSchema() {
+  return getPasswordRangeSchema()
     .regex(/^[a-zA-Z0-9!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]*$/, {
       message: 'Должен содержать только цифры, буквы и спецсимволы',
     })

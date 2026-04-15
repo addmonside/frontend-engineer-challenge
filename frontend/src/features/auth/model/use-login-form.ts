@@ -1,11 +1,11 @@
 import { useForm } from '@tanstack/react-form'
 import z from 'zod'
 import { useLoginMutation } from './use-login-mutation'
-import { getEmailVallidationSchema, getPasswordVallidationSchema } from './validation'
+import { getEmailSchema, getPasswordRangeSchema } from './validation'
 
 const schema = z.object({
-  email: getEmailVallidationSchema(),
-  password: getPasswordVallidationSchema(),
+  email: getEmailSchema(),
+  password: getPasswordRangeSchema(),
 })
 
 export function useLoginForm({ onSuccess }: { onSuccess?: () => void } = {}) {

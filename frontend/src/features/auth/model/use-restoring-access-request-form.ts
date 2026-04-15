@@ -1,10 +1,10 @@
 import { useForm } from '@tanstack/react-form'
 import z from 'zod'
 import { useRestoringAccessRequestMutation } from './use-restoring-access-request-mutation'
-import { getEmailVallidationSchema } from './validation'
+import { getEmailSchema } from './validation'
 
 const schema = z.object({
-  email: getEmailVallidationSchema(),
+  email: getEmailSchema(),
 })
 
 export function useRestoringAccessRequestForm({ onSuccess }: { onSuccess: () => void }) {
